@@ -5,12 +5,95 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+
+
+    <script type="text/javascript">
+    $(document).ready( function() {
+			$('#SignupForm').submit( validateForm );
+		});
+
+        function add_li(list, text) {
+            var list = document.getElementById(list);
+            var li = document.createElement("li");
+            li.innerHTML = text;
+            list.appendChild(li);
+        }
+
+        function validateForm()
+        {					
+
+			$("#1").hide(); 
+			$("#1").empty();
+            var errors = [];
+			
+
+            var x=document.forms["SignupForm"]["name"].value;
+            if (x==null || x=="")
+            {
+                errors.push ( "Name required for signup!" );
+                
+            }
+            else if (x.length < 4)
+            {
+            	errors.push("Name must be longer than 3 characters!");
+            }
+            var x=document.forms["SignupForm"]["email"].value;
+            var atpos=x.indexOf("@");
+            var dotpos=x.lastIndexOf(".");
+            if (x == null || x == "")
+            {
+                errors.push ( "Email address required for signup!" );
+                
+            }
+            else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+            {
+                errors.push ( "Email address is not valid!" );
+                
+            }
+            var x=document.forms["SignupForm"]["password"].value;
+			var y=document.forms["SignupForm"]["confirm password"].value;
+            if (x == null || x == "")
+            {
+                errors.push ( "Password required for signup!" );
+                
+            }
+            else if (x.length < 6)
+            {
+                errors.push ( "Password must be longer than 6 characters!" );
+                
+            }
+			else if (x != y)
+			{
+				errors.push ( "Passwords do not match!");
+			}
+            
+            if( 0 < errors.length ) {
+            
+                $(errors).each( function(index) {
+                    add_li( 1, errors[index]);
+                });
+
+                $('#1').fadeIn("slow");
+				
+				return false;
+            }
+			return true;
+			
+			window.location = "users/new/welcome";
+        }            
+    </script>
+		<!--<meta HTTP-EQUIV="REDIRECT" content="1; url=http://localhost:3000/users/new/welcome.html">-->
 </head>
 <body>
-	<ul class="hmenu">
+	<h2>
     <%= render 'devise/menu/registration_items' %>
     <%= render 'devise/menu/login_items' %>
-  	</ul>
+  	</h2>
   	<p style="color: green"><%= notice %></p>
   	<p style="color: red"><%= alert %></p>
 

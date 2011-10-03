@@ -1,21 +1,74 @@
-<h2>Sign up</h2>
-
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+	<%= devise_error_messages! %>
+	<div data-role="page" id="search" data-theme="b">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		<div data-role="header" data-theme="b">
+			<h1><font size = '6'>SnapSort</font></h1>
+		</div><!-- /header -->
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		<div data-role="content">	
+			<form action="http://localhost:3000/users/new/" method="get" name="SignupForm" id="SignupForm">
+                        <center>
+                        <br>
+						<h2><font size='6'>Sign Up</font></h2>
+                        <br>
+						<div data-role="fieldcontain">
+						    <label for="name">User Name:</label>
+						    <%= f.text_field :name %>
+                        </div>
+						<div data-role="fieldcontain">
+						    <label for="email">Email:</label>
+						    <%= f.email_field :email %>
+						</div>
+						<div data-role="fieldcontain">
+						    <label for="password">Password:</label>
+						    <%= f.password_field :password %>
+						</div>
+						<div data-role="fieldcontain">
+						    <label for="password">Confirm Password:</label>
+						    <%= f.password_field :password_confirmation %>
+						</div>
+                        <br>
+						<br>
+						<%= render :partial => "devise/shared/links" %>
+                        <br>
+                        <div id='1'></div>
+						<br>
+						<br>
+                        <br>
+                        <div class="ui-body ui-body-b">
+							<fieldset class="ui-grid-d">
+								<div class="ui-block-x"><%= f.submit "Sign up" %></button></div>
+                            </fieldset>
+						</div>
+                        </center>
+                        <%end%>
+			</form>
+		</div><!-- /content -->
+       
+	   <div data-role="page" id="welcome">		
+		<div data-role="header" data-theme="b">
+			<h1><font size = '6'>SnapSort</font></h1>
+		</div><!-- /header -->
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+		<div data-role="content">	
+                        <center> 
+						<br>
+                        <br>
+                        <div>
+						<p><b><font size='10'>Welcome<br><br>to<br><br>SnapSort!</font></b></p>
+						</div>
+						<br>
+						<br>
+                        <br>
+                        </center>
+		</div><!-- /content -->
+       
+	   <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" data-transition="slideup" data-icon="star">Take a Picture</a></li>
+					<li><a href="#" data-transition="slideup" data-icon="search">Search Pictures</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div><!-- /footer -->

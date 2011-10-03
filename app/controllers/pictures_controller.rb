@@ -14,6 +14,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1.json
   def show
     @picture = Picture.find(params[:id])
+    @tags = @picture.tags.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +27,6 @@ class PicturesController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @picture = @user.pictures.build()
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @picture }

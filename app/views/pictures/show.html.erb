@@ -6,18 +6,15 @@
 </p>
 
 <p>
-  <b>Longitude:</b>
-  <%= @picture.longitude %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @picture.latitude %>
-</p>
-
-<p>
 	<%= image_tag @picture.photo %>
 	</p>
+<p></p>
+<p>Tags</p>
+<p>
+<% @tags.each do |tag| %>
+	<u><%= tag.tagcontent %></u>
+<% end %>
+</p>
 
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |

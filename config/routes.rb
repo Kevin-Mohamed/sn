@@ -15,8 +15,27 @@ Snapsort::Application.routes.draw do
   
   match '/users/:id/myPictures', :to => 'users#myPictures'
 
-  root :to => "home#index"
-
+  # taken out root :to => "home#index"
+  
+  
+  
+  
+  
+  
+  
+  #shafkat
+  match 'users/new/welcome/', :to => 'users#welcome'
+  match 'users/new/browsepictures', :to => 'users#browsepictures'
+  match 'users/new/showpicture.html#options', :to => 'users#showpicture'
+  match 'users/new/map', :to => 'users#map'
+  match 'users/new/tags', :to => 'users#tags'
+  match 'users/new/showpicture', :to => 'users#showpicture'
+  match 'users/new/takepicture', :to => 'users#takepicture'
+  match 'users/new', :to => 'users#_form'
+  match 'users/new/?:name:email:password', :to => 'users#welcome'
+  match 'users/show/:id', :to => 'users#show'
+  match 'users/home', :to => 'users#welcome'
+  root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
